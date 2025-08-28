@@ -1,0 +1,33 @@
+<div class="container w-50 d-flex justify-content-center mt-5">
+    <form class="d-flex flex-column w-75 justify-content-center" action="/api/v1/packages/add" method="post">
+        <div class="form-group mb-3">
+          <label for="packageTitle">Title</label>
+          <input type="text" [(ngModel)]="packageTitle" class="form-control" name="packageTitle" id="packageTitle" placeholder="Enter Package Title" minlength="3" maxlength="15" pattern="^[a-zA-Z0-9 ]+$" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="packageDescription">Description</label>
+            <input type="text" [(ngModel)]="packageDescription" class="form-control" name="packageDescription" id="packageDescription" placeholder="Enter Package Description" maxlength="30">
+        </div>
+        <div class="form-group mb-3">
+            <label for="packageWeight">Weight</label>
+            <input type="number" [(ngModel)]="packageWeight" class="form-control" name="packageWeight" id="packageWeight" min="0.000001" step="any" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="packageDestination">Destination</label>
+            <input type="text" [(ngModel)]="packageDestination" class="form-control" name="packageDestination" id="packageDestination" placeholder="Enter Package Destination" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9 ]+$" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="driverID">Driver ID</label>
+          <select class="form-control" [(ngModel)]="driverID" name="driverID" id="driverID" required>
+            @for (driver of drivers; track driver) {
+                <option [value]="driver._id">{{driver.driverID}}</option>
+            }
+          </select>
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-check-label d-block" for="isAllocated">Is Allocated</label>
+            <input class="form-check-input" [(ngModel)]="isAllocated" type="checkbox" name="isAllocated" id="isAllocated">
+        </div>
+        <button (click)="addPackage()" [disabled]="!inputValidator()" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

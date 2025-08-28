@@ -1,0 +1,25 @@
+<div class="container w-50 d-flex justify-content-center mt-3">
+    <form class="d-flex flex-column w-75 justify-content-center">
+        <div class="form-group mb-3">
+          <label for="driverName">Name</label>
+          <input type="text" [(ngModel)]="driverName" class="form-control" name="driverName" id="driverName" placeholder="Enter Driver's name" minlength="3" maxlength="20" pattern="^[a-zA-Z ]+$" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="driverDepartment">Department</label>
+          <select class="form-control" [(ngModel)]="driverDepartment" name="driverDepartment" id="driverDepartment" required>
+            <option>Food</option>
+            <option>Furniture</option>
+            <option>Electronic</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="driverLicence">Licence</label>
+            <input type="text" class="form-control" [(ngModel)]="driverLicence" required name="driverLicence" id="driverLicence" placeholder="Driver's licence" minlength="5" maxlength="5" pattern="^[a-zA-Z0-9]+$">
+        </div>
+        <div class="form-group form-switch mb-3">
+            <input class="form-check-input" [(ngModel)]="isDriverActive" type="checkbox" name="isDriverActive" role="switch" id="isDriverActive" checked>
+            <label class="form-check-label" for="isDriverActive">&#160;Is Active?</label>
+        </div>
+        <button (click)="addDriver()" [disabled]="!inputValidator()" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

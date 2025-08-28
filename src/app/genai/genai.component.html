@@ -1,0 +1,51 @@
+<div class="container mt-5 w-75">
+    <div class="">
+        <h3 class="text-center">Distance</h3>
+        <div class="container mb-3">
+            @if(packages.length == 0) {
+              <div class="container w-50 d-flex justify-content-center mt-5">
+                <h2>No package in the database</h2>
+              </div>
+            }
+            @else{
+              <table class="table mt-5">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Weight</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Distance</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @for(package of packages; track package) {
+                            <tr>
+                              <td class="align-middle"><b>{{package.packageID}}</b><br>({{package._id}})</td>
+                              <td class="align-middle">{{package.title}}</td>
+                              <td class="align-middle">{{package.weight | weightFormatting}}</td>
+                              <td class="align-middle">{{package.destination}}</td>
+                              <td class="align-middle">{{package.description}}</td>
+                              <td class="align-middle"><button (click)="calculateDistance(package._id)" type="submit" class="btn btn-success">D</button></td>
+                            </tr>
+                          }
+                        </tbody>
+              </table>
+            }
+        </div>
+      @if (distance != "") {
+        <div class="container mb-3">
+          <p>{{distance}}</p>
+        </div>
+      }
+        
+    
+    <div class="d-flex justify-content-center mt-5">
+        <div class="w-50 d-flex justify-content-between">
+            <button class="btn btn-secondary" (click)="naviate(0)" style="width: 150px;">Translation</button>
+            <button class="btn btn-secondary" (click)="naviate(1)" style="width: 150px;">TTS</button>
+            <button class="btn btn-secondary" (click)="naviate(2)" style="width: 150px;">GenAI</button>
+        </div>
+    </div>
+</div>

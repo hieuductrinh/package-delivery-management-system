@@ -1,0 +1,19 @@
+<div class="container w-50 d-flex flex-column align-items-center mt-5">
+    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+    <form class="d-flex flex-column w-75 justify-content-center">
+        <div class="form-group mb-3">
+          <label for="username">Username</label>
+          <input [(ngModel)]="username" type="text" class="form-control" name="username" id="username" placeholder="Enter your username" minlength="6" pattern="^[a-zA-Z0-9]+$" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input [(ngModel)]="password" type="password" class="form-control" required name="password" id="password" placeholder="Enter your password" minlength="5" maxlength="10">
+        </div>
+        <div class="form-group mb-3">
+            <label for="passwordConfirm">Confirm your password</label>
+            <input [(ngModel)]="confirmPassword" type="password" class="form-control" required name="passwordConfirm" id="passwordConfirm" placeholder="Confirm your password" minlength="5" maxlength="10">
+        </div>
+        <button (click)="signup()" [disabled]="!inputValidator()" type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+    <p class="block">Already a user? <a routerLink="../login">Log in</a></p>
+</div>

@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <h3>Current numbers of Drivers and Packages</h3>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Group</th>
+        <th scope="col">Counts</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="align-middle"><b>Driver</b></td>
+          <td class="align-middle">{{drivers.length}}</td>
+        </tr>
+        <tr>
+          <td class="align-middle"><b>Package</b></td>
+          <td class="align-middle">{{packages.length}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container mt-5">
+    <h3>CRUD operations</h3>
+    <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Operation</th>
+                  <th scope="col">Counts</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td class="align-middle"><b>Retrieve</b></td>
+                    <td class="align-middle">{{operation.retrieve}}</td>
+                  </tr>
+                  <tr>
+                    <td class="align-middle"><b>Insert</b></td>
+                    <td class="align-middle">{{operation.insert}}</td>
+                  </tr>
+                  <tr>
+                    <td class="align-middle"><b>Delete</b></td>
+                    <td class="align-middle">{{operation.delete}}</td>
+                  </tr>
+                  <tr>
+                    <td class="align-middle"><b>Update</b></td>
+                    <td class="align-middle">{{operation.update}}</td>
+                  </tr>
+              </tbody>
+    </table>
+  </div>

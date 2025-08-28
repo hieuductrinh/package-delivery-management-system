@@ -1,0 +1,67 @@
+<div class="container">
+  @if(packages.length == 0) {
+    <div class="container w-50 d-flex justify-content-center mt-5">
+      <h2>No package in the database</h2>
+    </div>
+  }
+  @else{
+    <table class="table mt-5">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Is Allocated</th>
+                  <th scope="col">Driver ID</th>
+                  <th scope="col">Created At</th>
+                  <th scope="col">Driver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for(package of packages; track package) {
+                  <tr>
+                    <td class="align-middle"><b>{{package.packageID}}</b><br>({{package._id}})</td>
+                    <td class="align-middle">{{package.title}}</td>
+                    <td class="align-middle">{{package.weight | weightFormatting}}</td>
+                    <td class="align-middle">{{package.destination}}</td>
+                    <td class="align-middle">{{package.description}}</td>
+                    <td class="align-middle">{{package.isAllocated}}</td>
+                    <td class="align-middle">{{package.driverID.driverID}}</td>
+                    <td class="align-middle">{{package.createdAt | dateFormatting}}</td>
+                    <td class="align-middle"><button (click)="showDriver(package._id)" type="submit" class="btn btn-success">?</button></td>
+                  </tr>
+                }
+              </tbody>
+    </table>
+    @if (beingDisplayed) {
+      <h3 class="text-center mt-5">Assigned Driver</h3>
+      <table class="table mt-5">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">License</th>
+            <th scope="col">Is active</th>
+            <th scope="col">Created at</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td class="align-middle"><b>{{assignedDriver.driverID}}</b><br>({{assignedDriver._id}})</td>
+              <td class="align-middle">{{assignedDriver.name | uppercase}}</td>
+              <td class="align-middle">{{assignedDriver.department}}</td>
+              <td class="align-middle">{{assignedDriver.licence | uppercase}}</td>
+              <td class="align-middle">{{assignedDriver.isActive}}</td>
+              <td class="align-middle">{{assignedDriver.createdAt| dateFormatting}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-row-reverse justify-content-center">
+      <div class="p-2"><button (click)="return()" type="submit" class="btn btn-secondary">Return</button></div>
+    </div>
+    }
+  }
+</div>

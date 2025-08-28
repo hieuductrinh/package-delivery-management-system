@@ -1,0 +1,39 @@
+<div class="container">
+  @if(packages.length == 0) {
+    <div class="container w-50 d-flex justify-content-center mt-5">
+      <h2>No package in the database</h2>
+    </div>
+  }
+  @else{
+    <table class="table mt-5">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Is Allocated</th>
+                  <th scope="col">Driver ID</th>
+                  <th scope="col">Created At</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for(package of packages; track package) {
+                  <tr>
+                    <td class="align-middle"><b>{{package.packageID}}</b><br>({{package._id}})</td>
+                    <td class="align-middle">{{package.title}}</td>
+                    <td class="align-middle">{{package.weight | weightFormatting}}</td>
+                    <td class="align-middle">{{package.destination}}</td>
+                    <td class="align-middle">{{package.description}}</td>
+                    <td class="align-middle">{{package.isAllocated}}</td>
+                    <td class="align-middle">{{package.driverID.driverID}}</td>
+                    <td class="align-middle">{{package.createdAt | dateFormatting}}</td>
+                    <td class="align-middle"><button (click)="deletePackage(package._id)" type="submit" class="btn btn-danger">X</button></td>
+                  </tr>
+                }
+              </tbody>
+    </table>
+  }
+</div>

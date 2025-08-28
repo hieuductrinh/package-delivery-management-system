@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-3 mb-md-0 me-md-auto">
+        <a routerLink="" class="d-flex flex-wrap justify-content-center align-items-center ps-2 text-dark text-decoration-none">
+            <span class="fs-4">Package Delivery Management System</span>
+        </a>
+        @if (!loggedIn) {
+            <nav class="d-flex flex-wrap justify-content-center">
+                <ul class="nav nav-pills d-flex align-items-center">
+                    <li class="nav-item"><a routerLink="login" class="nav-link">Log In</a></li>
+                    <li class="nav-item"><a routerLink="signup" class="nav-link">Sign Up</a></li>
+                </ul>
+            </nav>
+        } 
+        @else {
+            <nav class="d-flex flex-wrap justify-content-center">
+                <ul class="nav nav-pills d-flex align-items-center">
+                    <li class="nav-item"><button (click)="signout()" class="nav-link">Sign Out</button></li>
+                    <li class="nav-item"><a routerLink="stats" class="nav-link">Stats</a></li>
+                    <li class="nav-item"><a routerLink="translation" class="nav-link">Cloud Services</a></li>
+                </ul>
+            </nav>
+        }
+    </div>
+    <nav class="d-flex flex-wrap justify-content-center border-top pt-4">
+        <ul class="nav nav-pills d-flex align-items-center">
+            <li class="nav-item"><a routerLink="" class="nav-link">Home</a></li>
+            <li class="nav-item"><a routerLink="add-driver" class="nav-link">Add Driver</a></li>
+            <li class="nav-item"><a routerLink="list-drivers" class="nav-link">Show Drivers</a></li>
+            <li class="nav-item"><a routerLink="delete-driver" class="nav-link">Remove Drivers</a></li>
+            <li class="nav-item"><a routerLink="update-driver" class="nav-link">Edit Driver</a></li>
+            <li class="nav-item"><a routerLink="add-package" class="nav-link">Add Package</a></li>
+            <li class="nav-item"><a routerLink="list-packages" class="nav-link">Show Packages</a></li>
+            <li class="nav-item"><a routerLink="delete-package" class="nav-link">Delete Package</a></li>
+            <li class="nav-item"><a routerLink="update-package" class="nav-link">Edit Package</a></li>
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,57 @@
+<div class="container mt-5 w-75">
+    <div class="">
+        <h3 class="text-center">Text to Speech</h3>
+        <div class="container mb-3">
+            @if(drivers.length == 0) {
+                <div class="container w-50 d-flex justify-content-center mt-5">
+                  <h2>No driver in the database</h2>
+                </div>
+              }
+              @else{
+                <table class="table mt-5">
+                          <thead class="thead-light">
+                            <tr>
+                              <th scope="col">ID</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Department</th>
+                              <th scope="col">License</th>
+                              <th scope="col">Speech</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @for(driver of drivers; track driver) {
+                              <tr>
+                                <td class="align-middle"><b>{{driver.driverID}}</b><br>({{driver._id}})</td>
+                                <td class="align-middle">{{driver.name | uppercase}}</td>
+                                <td class="align-middle">{{driver.department}}</td>
+                                <td class="align-middle">{{driver.licence | uppercase}}</td>
+                                <td class="align-middle"><button (click)="textToSpeech(driver._id)" type="submit" class="btn btn-success">S</button></td>
+                              </tr>
+                              }
+                          </tbody>
+                  </table>
+            }
+        </div>
+        @if (urlToFile != "") {
+            <div class="container mb-3">
+                <div class="form-group mb-3">
+                    <label for="textToConvert">Text to Convert</label>
+                    <input type="text" class="form-control" [(ngModel)]="textToConvert" required name="textToConvert" id="textToConvert" disabled>
+                </div>
+            </div>
+            <div class="container mb-3">
+                <div class="form-group mb-3">
+                    <label for="textToConvert">Converted Speech</label>
+                    <audio id="audio" controls class="d-block" src="{{urlToFile}}" pre-load="none"></audio>
+                    <button (click)="play()" type="submit" class="btn btn-success mt-3">Play</button>
+                </div>
+            </div>
+        }
+    <div class="d-flex justify-content-center mt-5">
+        <div class="w-50 d-flex justify-content-between">
+            <button class="btn btn-secondary" (click)="naviate(0)" style="width: 150px;">Translation</button>
+            <button class="btn btn-secondary" (click)="naviate(1)" style="width: 150px;">TTS</button>
+            <button class="btn btn-secondary" (click)="naviate(2)" style="width: 150px;">GenAI</button>
+        </div>
+    </div>
+</div>
